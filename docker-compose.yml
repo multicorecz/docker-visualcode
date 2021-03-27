@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+    visualcode:
+        image: visualcode
+        container_name: visualcode
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        restart: always
+        ports:
+            - 8087:8080
+        volumes:
+            - ./code-server/config:/root/.config/code-server
+            - ./code-server/extensions:/root/.local/share/code-server/extensions
+            - ./src:/srv
+        working_dir: /srv
